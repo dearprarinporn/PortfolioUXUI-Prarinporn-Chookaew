@@ -62,102 +62,17 @@ function ProjectModal({ isOpen, onClose, project }) {
           </svg>
         </button>
 
-        {/* Header */}
-        <div className="bg-gradient-to-br from-[#8B5CF6] to-[#8B5CF6] p-4 md:p-8 rounded-t-2xl md:rounded-t-3xl">
-          <div className="flex flex-col sm:flex-row justify-between items-start gap-3">
-            <div className="flex-1 pr-12 sm:pr-4">
-              <h2 className="text-2xl md:text-3xl font-medium text-white mt-1">{project.title}</h2>
-            </div>
-            <span className="bg-white/20 backdrop-blur-md text-white px-4 md:px-6 py-1.5 md:py-2 rounded-full border border-white/30 text-sm md:text-base whitespace-nowrap">
-              {project.year}
-            </span>
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="p-4 md:p-8">
-          {/* Project Image */}
-          {project.image && (
-            <div className="mb-6 md:mb-8 rounded-xl md:rounded-2xl overflow-hidden">
-              <LazyImage 
-                alt={project.title}
+        {/* Content - Only Screenshots */}
+        <div className="overflow-hidden rounded-2xl md:rounded-3xl">
+          <div>
+            {project.additionalImages && project.additionalImages.map((img, index) => (
+              <LazyImage
+                key={index}
+                src={img}
+                alt={`${project.title} screenshot ${index + 1}`}
                 className="w-full h-auto"
               />
-            </div>
-          )}
-
-          {/* Project Description */}
-          <div className="space-y-4 md:space-y-6">
-            <div>
-              <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-3">Project Overview</h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                {project.description || 'This is an amazing project that showcases modern design principles and user-centered approach. The project focuses on creating intuitive and engaging user experiences.'}
-              </p>
-            </div>
-
-            {/* Project Details */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-              <div>
-                <h4 className="font-semibold text-gray-800 mb-1 md:mb-2 text-sm md:text-base">Role</h4>
-                <p className="text-sm md:text-base text-gray-600">{project.role || 'UX/UI Designer'}</p>
-              </div>
-              <div>
-                <h4 className="font-semibold text-gray-800 mb-1 md:mb-2 text-sm md:text-base">Duration</h4>
-                <p className="text-sm md:text-base text-gray-600">{project.duration || '3 months'}</p>
-              </div>
-              <div>
-                <h4 className="font-semibold text-gray-800 mb-1 md:mb-2 text-sm md:text-base">Tools</h4>
-                <p className="text-sm md:text-base text-gray-600">{project.tools || 'Figma, Adobe XD, Sketch'}</p>
-              </div>
-              <div>
-                <h4 className="font-semibold text-gray-800 mb-1 md:mb-2 text-sm md:text-base">Category</h4>
-                <p className="text-sm md:text-base text-gray-600">{project.category || 'Mobile App Design'}</p>
-              </div>
-            </div>
-
-            {/* Key Features */}
-            <div>
-              <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-3">Key Features</h3>
-              <ul className="space-y-2">
-                <li className="flex items-start gap-2 text-sm md:text-base text-gray-600">
-                  <span className="text-[#8B5CF6] mt-1">✓</span>
-                  <span>Modern and intuitive user interface design</span>
-                </li>
-                <li className="flex items-start gap-2 text-sm md:text-base text-gray-600">
-                  <span className="text-[#8B5CF6] mt-1">✓</span>
-                  <span>Responsive design for all devices</span>
-                </li>
-                <li className="flex items-start gap-2 text-sm md:text-base text-gray-600">
-                  <span className="text-[#8B5CF6] mt-1">✓</span>
-                  <span>User-centered design approach</span>
-                </li>
-                <li className="flex items-start gap-2 text-sm md:text-base text-gray-600">
-                  <span className="text-[#8B5CF6] mt-1">✓</span>
-                  <span>Accessibility compliant</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* CTA Button */}
-            <div className="pt-2 md:pt-4 pb-4 md:pb-6">
-              <button className="w-full md:w-auto bg-[#8B5CF6] text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold hover:bg-purple-700 transition-all duration-300 hover:scale-105 text-sm md:text-base">
-                View Live Project
-              </button>
-            </div>
-
-            {/* Additional Project Images */}
-            <div className="space-y-4">
-              <div className="space-y-4 md:space-y-6">
-                {project.additionalImages && project.additionalImages.map((img, index) => (
-                  <LazyImage
-                    key={index}
-                    src={img}
-                    alt={`${project.title} screenshot ${index + 1}`}
-                    className="w-full h-auto rounded-xl md:rounded-2xl"
-                  />
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

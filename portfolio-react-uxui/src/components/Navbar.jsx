@@ -70,7 +70,7 @@ function Navbar() {
               onClick={handleLinkClick}
               className="block text-gray-700 hover:text-[#8B5CF6] transition py-2"
             >
-              Works
+              Projects
             </a>
             <a 
               href="#experience" 

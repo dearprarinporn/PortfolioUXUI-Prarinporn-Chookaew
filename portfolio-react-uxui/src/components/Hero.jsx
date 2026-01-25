@@ -29,7 +29,7 @@ function Hero() {
           {/* Center - Hero Image */}
           <div className="relative w-full max-w-[250px] sm:max-w-[320px] md:max-w-[400px] lg:max-w-[520px] mx-auto flex items-end justify-center animate-scaleIn animate-delay-400 mb-2 md:mb-4 mt-10">
             {/* Background Circle */}
-            <div className="absolute bottom-[-10px] md:bottom-[-20px] left-1/2 -translate-x-1/2 w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] md:w-[480px] md:h-[480px] lg:w-[620px] lg:h-[600px] bg-[#E6DEFF] rounded-full"></div>
+            <div className="absolute bottom-[-10px] md:bottom-[-20px] left-1/2 -translate-x-1/2 w-[260px] h-[260px] sm:w-[340px] sm:h-[340px] md:w-[460px] md:h-[460px] lg:w-[600px] lg:h-[600px] bg-[#E6DEFF] rounded-full"></div>
             
             {/* Hero Image */}
             <img 

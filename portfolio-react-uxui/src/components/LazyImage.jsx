@@ -32,15 +32,10 @@ function LazyImage({ src, alt, className = '', placeholder = null }) {
 
   return (
     <div ref={imgRef} className={`relative overflow-hidden ${className}`}>
-      {isLoading && (
-        <div className="absolute inset-0 bg-gray-200 animate-pulse" />
-      )}
       <img
         src={imageSrc}
         alt={alt}
-        className={`w-full h-full object-cover transition-opacity duration-500 ${
-          isLoading ? 'opacity-0' : 'opacity-100'
-        }`}
+        className="w-full h-full object-cover transition-opacity duration-500"
       />
     </div>
   )

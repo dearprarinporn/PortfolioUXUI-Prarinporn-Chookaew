@@ -2,6 +2,7 @@ import { useState } from 'react'
 import ProjectCard from './ProjectCard'
 import ProjectModal from './ProjectModal'
 import { projectsData } from '../data/projectsData'
+import projectBackground from '../assets/projectBlackground.jpg'
 
 function Projects() {
   const [selectedProject, setSelectedProject] = useState(null)
@@ -19,9 +20,16 @@ function Projects() {
 
   return (
     <>
-      <section id="projects" className="relative py-12 md:py-20 px-4 md:px-8 overflow-hidden -mt-8 md:-mt-12">
-        {/* Background */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#8B5CF6]/60 to-[#6D28D9]/70"></div>
+      <section id="projects" className="relative py-12 md:py-20 px-4 md:px-8 overflow-hidden -mt-8 md:-mt-12 rounded-3xl md:rounded-[3rem] mx-4 md:mx-8">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0 rounded-3xl md:rounded-[3rem]">
+          <img 
+            src={projectBackground} 
+            alt="Project Background" 
+            className="w-full h-full object-cover rounded-3xl md:rounded-[3rem]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#8B5CF6]/60 to-[#6D28D9]/70 rounded-3xl md:rounded-[3rem]"></div>
+        </div>
         
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto">

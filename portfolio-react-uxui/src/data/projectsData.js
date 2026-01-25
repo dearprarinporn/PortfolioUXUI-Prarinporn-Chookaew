@@ -14,7 +14,9 @@ export const projectsData = [
     tools: 'Figma',
     category: 'Mobile Application',
     additionalImages: [
+      `${CLOUDINARY_URL}/logo_x6xjtr.webp`,
       `${CLOUDINARY_URL}/1_krv2cm.webp`,
+      
     ]
   },
   {
