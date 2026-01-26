@@ -8,6 +8,7 @@ function Projects() {
   const [selectedProject, setSelectedProject] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0) // เริ่มที่การ์ดแรก
+  const [savedScrollIndex, setSavedScrollIndex] = useState(0) // เก็บ index ก่อนเปิด modal
   const scrollContainerRef = useRef(null)
 
   // คำนวณ max index ที่สามารถเลื่อนได้
@@ -42,25 +43,29 @@ function Projects() {
 
   const handleProjectClick = (project) => {
     const projectIndex = projectsData.findIndex(p => p.id === project.id)
-    setCurrentIndex(projectIndex)
+    setSavedScrollIndex(currentIndex) // เก็บ index ปัจจุบันก่อนเปิด modal
     setSelectedProject(project)
     setIsModalOpen(true)
+    // ไม่เปลี่ยน currentIndex ที่นี่
   }
 
   const handleCloseModal = () => {
     setIsModalOpen(false)
-    setTimeout(() => setSelectedProject(null), 300)
+    setTimeout(() => {
+      setSelectedProject(null)
+      setCurrentIndex(savedScrollIndex) // คืนค่า index กลับ
+    }, 300)
   }
 
   const handleNextProject = () => {
-    const nextIndex = (currentIndex + 1) % projectsData.length
-    setCurrentIndex(nextIndex)
+    const currentProjectIndex = projectsData.findIndex(p => p.id === selectedProject.id)
+    const nextIndex = (currentProjectIndex + 1) % projectsData.length
     setSelectedProject(projectsData[nextIndex])
   }
 
   const handlePrevProject = () => {
-    const prevIndex = currentIndex === 0 ? projectsData.length - 1 : currentIndex - 1
-    setCurrentIndex(prevIndex)
+    const currentProjectIndex = projectsData.findIndex(p => p.id === selectedProject.id)
+    const prevIndex = currentProjectIndex === 0 ? projectsData.length - 1 : currentProjectIndex - 1
     setSelectedProject(projectsData[prevIndex])
   }
 
@@ -93,7 +98,7 @@ function Projects() {
         
         {/* Content */}
         <div className="relative z-10 w-full">
-          <div className="mb-8 md:mb-12 animate-fadeInUp px-4 md:px-8">
+          <div className="mb-8 md:mb-12 animate-fadeInUp px-4 md:px-20">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white">Project</h2>
           </div>
 
@@ -102,40 +107,34 @@ function Projects() {
             {/* Cards Container with Navigation Overlay */}
             <div 
               ref={scrollContainerRef}
-              className="overflow-hidden relative group px-4 md:px-8"
+              className="overflow-hidden relative px-4 md:px-8"
               style={{ scrollBehavior: 'smooth' }}
             >
               {/* Previous Button - Left Overlay */}
-              <button
-                onClick={prevSlide}
-                disabled={currentIndex === 0}
-                className={`absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-16 md:h-16 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 ${
-                  currentIndex === 0 
-                    ? 'bg-gray-300 cursor-not-allowed opacity-0' 
-                    : 'bg-white/90 hover:bg-white hover:scale-110 opacity-0 group-hover:opacity-100'
-                }`}
-                aria-label="Previous"
-              >
-                <svg className="w-6 h-6 md:w-8 md:h-8 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
+              {currentIndex > 0 && (
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-16 md:h-16 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+                  aria-label="Previous"
+                >
+                  <svg className="w-6 h-6 md:w-8 md:h-8 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+              )}
 
               {/* Next Button - Right Overlay */}
-              <button
-                onClick={nextSlide}
-                disabled={currentIndex >= maxScrollIndex}
-                className={`absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-16 md:h-16 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 ${
-                  currentIndex >= maxScrollIndex 
-                    ? 'bg-gray-300 cursor-not-allowed opacity-0' 
-                    : 'bg-white/90 hover:bg-white hover:scale-110 opacity-0 group-hover:opacity-100'
-                }`}
-                aria-label="Next"
-              >
-                <svg className="w-6 h-6 md:w-8 md:h-8 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
+              {currentIndex < maxScrollIndex && (
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-16 md:h-16 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
+                  aria-label="Next"
+                >
+                  <svg className="w-6 h-6 md:w-8 md:h-8 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              )}
 
               <div className="relative flex items-center min-h-[400px]">
                 <div 
@@ -192,10 +191,6 @@ function Projects() {
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         project={selectedProject}
-        onNext={handleNextProject}
-        onPrev={handlePrevProject}
-        currentIndex={currentIndex}
-        totalProjects={projectsData.length}
       />
     </>
   )

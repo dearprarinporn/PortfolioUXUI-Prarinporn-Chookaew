@@ -53,7 +53,7 @@ export const projectsData = [
       `${CLOUDINARY_URL}/MacBook_Pro_16__-_111_scrkci.webp`,
       `${CLOUDINARY_URL}/MacBook_Pro_16__-_112_enls08.webp`,
       `${CLOUDINARY_URL}/Frame_1597884729_hgreln.webp`,
-      `${CLOUDINARY_URL}/MacBook_Pro_16__-_24_h8a1hk.webp`,
+      `${CLOUDINARY_URL}/designsystem.webp`,
       `${CLOUDINARY_URL}/MacBook_Pro_16__-_100_f3kjaz.webp`,
       `${CLOUDINARY_URL}/MacBook_Pro_16__-_113_i9rafa.webp`,
       `${CLOUDINARY_URL}/MacBook_Pro_16__-_108_wfhqvj.webp`, 
@@ -84,7 +84,7 @@ export const projectsData = [
       `${CLOUDINARY_URL}/MacBook_Pro_16__-_48_e0kbat.webp`,
       `${CLOUDINARY_URL}/MacBook_Pro_16__-_50_odfqyw.webp`,
       `${CLOUDINARY_URL}/MacBook_Pro_16__-_49_qwf34v.webp`,
-      `${CLOUDINARY_URL}/MacBook_Pro_16__-_101_rye6uk.webp`,
+      `${CLOUDINARY_URL}/designsystem1.webp`,
       `${CLOUDINARY_URL}/MacBook_Pro_16__-_37_rb7b6l.webp`,
       `${CLOUDINARY_URL}/MacBook_Pro_16__-_38_hzvhy3.webp`,
       `${CLOUDINARY_URL}/MacBook_Pro_16__-_39_sdxnrx.webp`,
@@ -138,6 +138,19 @@ export const projectsData = [
     duration: '4 months',
     tools: 'Figma, Adobe XD, Figjam',
     category: 'Dashboard Design',
-    additionalImages: []
+    additionalImages: [
+      `${CLOUDINARY_URL}/MacBook_Pro_16__-_112_x5qcnj.webp`,
+      `${CLOUDINARY_URL}/MacBook_Pro_16__-_113_kgx9yo.webp`,
+      `${CLOUDINARY_URL}/MacBook_Pro_16__-_117_bcpa3h.webp`,
+      `${CLOUDINARY_URL}/MacBook_Pro_16__-_118_zdlm3s.webp`,
+      `${CLOUDINARY_URL}/Frame_1597885124_yc7zzu.webp`,
+      `${CLOUDINARY_URL}/MacBook_Pro_16__-_119_ttlmel.webp`,
+      `${CLOUDINARY_URL}/MacBook_Pro_16__-_120_rxnoqg.webp`,
+      `${CLOUDINARY_URL}/MacBook_Pro_16__-_121_cvuyai.webp`,
+      `${CLOUDINARY_URL}/MacBook_Pro_16__-_100_dmnvbn.webp`,
+      `${CLOUDINARY_URL}/MacBook_Pro_16__-_122_wqineg.webp`,
+      `${CLOUDINARY_URL}/MacBook_Pro_16__-_123_mdy7mb.webp`,
+      
+    ]
   },
 ]
