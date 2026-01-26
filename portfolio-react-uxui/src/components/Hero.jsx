@@ -1,6 +1,17 @@
 import heroImage from '../assets/profileIMG.png'
+import cvFile from '../assets/Prarinporn_Chookaew_CV.pdf'
 
 function Hero() {
+  const handleDownloadCV = () => {
+    // สร้าง link element สำหรับดาวน์โหลด
+    const link = document.createElement('a')
+    link.href = cvFile
+    link.download = 'Prarinporn_Chookaew_CV.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   return (
     <section id="home" className="flex flex-col items-center text-center px-4 md:px-8 pt-24 md:pt-32 pb-12 md:pb-20 mb-8">      
 
@@ -82,12 +93,12 @@ function Hero() {
               CONTACT&nbsp;US
             </a>
             
-            {/* Hire Me Button */}
+            {/* Download CV Button */}
             <button 
-              onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
+              onClick={handleDownloadCV}
               className="text-white px-6 sm:px-10 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-semibold bg-white/20 hover:bg-white/30 transition-all duration-300 hover:scale-105 transform uppercase tracking-wider whitespace-nowrap inline-flex items-center justify-center min-w-[100px] sm:min-w-[140px] backdrop-blur-sm"
             >
-              HIRE&nbsp;ME
+              Download&nbsp;CV
             </button>
           </div>
         </div>
