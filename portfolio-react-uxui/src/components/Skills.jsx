@@ -1,5 +1,6 @@
-import figmaLogo from '../assets/figmalogo.png'
-import framerLogo from '../assets/framerLogo.png'
+import figmaLogo from '../assets/figmaLogo.jpeg'
+import framerLogo from '../assets/framerLogo.jpeg' 
+import xdLogo from '../assets/xdLogo.svg.png'
 
 
 function Skills() {
@@ -9,21 +10,21 @@ function Skills() {
       logo: figmaLogo,
       percentage: 95,
       color: '#A259FF',
-      gradient: 'from-purple-500 to-pink-500'
+      
     },
     {
       name: 'Framer',
       logo: framerLogo,
       percentage: 80,
       color: '#0D99FF',
-      gradient: 'from-blue-500 to-purple-500'
+      
     },
     {
       name: 'Adobe XD',
-      icon: '🎯',
+      logo: xdLogo,
       percentage: 70,
       color: '#FF61F6',
-      gradient: 'from-pink-500 to-red-500'
+     
     }
   ]
 
@@ -42,7 +43,7 @@ function Skills() {
   ]
 
   return (
-    <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-br from-gray-50 to-white">
+    <section className="py-16 md:py-24 px-4 md:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16 animate-fadeInUp">
@@ -66,30 +67,28 @@ function Skills() {
                 {/* Circular Progress Ring */}
                 <div className="relative w-48 h-48 md:w-56 md:h-56">
                   {/* Background Circle */}
-                  <svg className="w-full h-full transform -rotate-90">
+                  <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
                     <circle
-                      cx="50%"
-                      cy="50%"
-                      r="45%"
+                      cx="50"
+                      cy="50"
+                      r="45"
                       fill="none"
                       stroke="#E5E7EB"
-                      strokeWidth="12"
+                      strokeWidth="8"
                     />
                     {/* Progress Circle */}
                     <circle
-                      cx="50%"
-                      cy="50%"
-                      r="45%"
+                      cx="50"
+                      cy="50"
+                      r="45"
                       fill="none"
                       stroke={skill.color}
-                      strokeWidth="12"
+                      strokeWidth="8"
                       strokeLinecap="round"
                       strokeDasharray={`${2 * Math.PI * 45}`}
                       strokeDashoffset={`${2 * Math.PI * 45 * (1 - skill.percentage / 100)}`}
                       className="transition-all duration-1000 ease-out"
-                      style={{
-                        filter: 'drop-shadow(0 0 8px rgba(162, 89, 255, 0.3))'
-                      }}
+                      
                     />
                   </svg>
 
@@ -108,14 +107,14 @@ function Skills() {
                       </div>
                     )}
                     {/* Percentage */}
-                    <div className="text-3xl md:text-4xl font-bold text-gray-900">
+                    <div className="text-2xl md:text-3xl font-semibold text-gray-900">
                       {skill.percentage}%
                     </div>
                   </div>
                 </div>
 
                 {/* Skill Name */}
-                <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mt-6">
+                <h3 className="text-lg md:text-xl font-semibold text-gray-900 mt-6">
                   {skill.name}
                 </h3>
               </div>
@@ -138,7 +137,7 @@ function Skills() {
                     {skill.icon}
                   </div>
                   {/* Skill Name */}
-                  <span className="text-lg font-semibold text-gray-900">
+                  <span className="text-base md:text-lg font-semibold text-gray-900">
                     {skill.name}
                   </span>
                 </div>
